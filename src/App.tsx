@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { ThemeProvider } from "styled-components";
+import Global from "./assets/wrappers/Global";
 
-function App() {
+const theme = {
+  primaryOrange: "hsl(26, 100%, 55%)",
+  secondaryOrange: "hsl(25, 100%, 94%)",
+  primaryBlue: "hsl(220, 13%, 13%)",
+  primaryGrayishBlue: "hsl(219, 9%, 45%)",
+  secondaryGrayishBlue: "hsl(220, 14%, 75%)",
+  tertiaryGrayishBlue: "hsl(223, 64%, 98%)",
+  primaryWhite: "hsl(0, 0%, 100%)",
+  primaryBlack: "hsl(0, 0%, 0%)",
+  secondaryBlack: "rgba(0, 0, 0, 0.75)",
+};
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Global />
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
