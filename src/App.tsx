@@ -1,4 +1,5 @@
 import { ThemeProvider } from "styled-components";
+import Header from "./components/Header";
 import Global from "./assets/wrappers/Global";
 
 const theme = {
@@ -17,6 +18,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Global />
+      <Header />
     </ThemeProvider>
   );
 };
