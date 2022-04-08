@@ -1,6 +1,12 @@
+import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import Header from "./components/Header";
+import ProductShow from "./components/ProductShow";
+import Product from "./components/Product";
 import Global from "./assets/wrappers/Global";
+import Modal from "./components/Modal";
+import Lightbox from "./components/Lightbox";
+import AppProvider from "./context";
 
 const theme = {
   primaryOrange: "hsl(26, 100%, 55%)",
@@ -15,11 +21,35 @@ const theme = {
 };
 
 const App = () => {
+  const [isLightboxOpen, setIsLightboxOpen] = useState<boolean>(false);
+
+  const closeLightbox = () => {
+    setIsLightboxOpen(false);
+    console.log("close");
+  };
+
   return (
-    <ThemeProvider theme={theme}>
-      <Global />
-      <Header />
-    </ThemeProvider>
+    <AppProvider>
+      <ThemeProvider theme={theme}>
+        <Global />
+        <Header />
+        <div className="container">
+          <Product>
+            <ProductShow
+              isLightboxOpen={isLightboxOpen}
+              openLightbox={() => setIsLightboxOpen(!isLightboxOpen)}
+            />
+          </Product>
+        </div>
+        <Modal open={isLightboxOpen} closeModal={closeLightbox} large={true}>
+          <Lightbox
+            isLightboxOpen={isLightboxOpen}
+            closeLightbox={closeLightbox}
+            openLightbox={() => setIsLightboxOpen(!isLightboxOpen)}
+          />
+        </Modal>
+      </ThemeProvider>
+    </AppProvider>
   );
 };
 

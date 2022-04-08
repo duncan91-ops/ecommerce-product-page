@@ -19,6 +19,19 @@ body {
   font-weight: 400;
   font-size: 1.6rem;
 }
+
+.container {
+  width: 100%;
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    width: 80%;
+    max-width: 120rem;
+  }
+}
 `;
 
 export default Global;
